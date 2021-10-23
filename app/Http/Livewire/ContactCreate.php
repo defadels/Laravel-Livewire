@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Contact;
 
 class ContactCreate extends Component
 {
@@ -33,6 +34,7 @@ class ContactCreate extends Component
         );
 
         $this->resetInput();
+        $this->emit('contactStored', $contact);
     }
 
     private function resetInput()
