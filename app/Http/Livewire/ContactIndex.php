@@ -11,6 +11,7 @@ class ContactIndex extends Component
     // public $data;
 
     public $statusUpdate = false;
+    public $paginate = 5;
 
     protected $listeners = [
         'contactStored' => 'handleStored',
@@ -22,7 +23,7 @@ class ContactIndex extends Component
         // $this->data = Contact::latest()->get();
 
         return view('livewire.contact-index',[
-        'contacts' => Contact::latest()->paginate(5)
+        'contacts' => Contact::latest()->paginate($this->paginate)
     ]);
     }
 

@@ -4,6 +4,7 @@
         {{ session('message') }}
     </div>
     @endif
+   
 
     @if($statusUpdate)
     <livewire:contact-update></livewire:contact-update>
@@ -11,8 +12,21 @@
     <livewire:contact-create></livewire:contact-create>
     @endif
     
+    
     <hr>
     
+    <div class="row">
+        <div class="col">
+            <select wire:model="paginate" name="" id="" class="form-control form-control-sm w-auto">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+            </select>
+        </div>
+    </div>
+
+<hr>
+
     <table class="table">
         <thead class="thead-dark">
             <tr>
