@@ -9,8 +9,11 @@ class ContactIndex extends Component
 {
     // public $data;
 
+    public $statusUpdate = false;
+
     protected $listeners = [
-        'contactStored' => 'handleStored'
+        'contactStored' => 'handleStored',
+        'contactUpdated' => 'handleUpdated'
     ];
 
     public function render()
@@ -22,7 +25,22 @@ class ContactIndex extends Component
     ]);
     }
 
-    public function handleStored($contact){
+    public function handleStored($contact)
+    {
         session()->flash('message', 'Contact '. $contact['name'] .' was stored!');
     }
+
+    public function handleUpdated($contact)
+    {
+        session()->flash('message', 'Contact '. $contact['name'] .' was updated!');
+    }
+
+    public function getContact($id) {
+        $contact = Contact::find($id);
+
+        $this->statusUpdate = true;
+        $this->emit('getContact', $contact);
+    }
+
+    
 }
