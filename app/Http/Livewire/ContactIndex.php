@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Livewire\WithPagination;
 use Livewire\Component;
 use App\Contact;
 
@@ -21,7 +22,7 @@ class ContactIndex extends Component
         // $this->data = Contact::latest()->get();
 
         return view('livewire.contact-index',[
-        'contacts' => Contact::latest()->get()
+        'contacts' => Contact::latest()->paginate(5)
     ]);
     }
 
